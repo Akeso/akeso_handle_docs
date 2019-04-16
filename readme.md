@@ -9,6 +9,7 @@ AKESO_NEW OPEN API文档
 #### <a href="#uploads_data">同步数据</a>
 #### <a href="#forecasts_options">近视预测条件</a>
 #### <a href="#forecasts_search">近视预测查询</a>
+#### <a href="#reports_health">眼健康</a>
 #### <a href="#reports_daily">日报</a>
 #### <a href="#reports_weekly">周报</a>
 #### <a href="#reports_monthly">月报</a>
@@ -179,6 +180,106 @@ Content-type: "application/json"
         "ctrl_data_default_top": [50,125,180,235,280,315,350,380,405,435,470,495],
         "ctrl_akeso_data": [50,125,185,235,280,320,350,380,410,440,470,500],
         "ctrl_rate": 49
+    }
+}
+```
+
+## <a name="reports_health">眼健康</a>
+```ruby
+GET http://hostname/api/open/reports/health
+```
+### Request
+
+```ruby
+# HEADERS
+Content-type: "application/json"
+
+# BODY
+{
+    child_id: '儿童id',
+    date: '2019-01-01'
+}
+```
+### Response
+
+#### 正确结果
+
+```ruby
+# HTTP CODE
+200
+
+# BODY
+{
+    "status": 200,
+    "message": "请求成功",
+    "data": {
+        "id": 157991,
+        "device_user_id": 13905,
+        "out_time_index": 0,
+        "lux_day_index": 0,
+        "step_count_index": 0,
+        "nearwork_burden_day_index": 29,
+        "bad_posture_day_index": 30,
+        "nearwork_day_index": 30,
+        "health_index": 70,
+        "wear_time": 115,
+        "bad_posture_times": 30,
+        "nearwork_burden_day": 219,
+        "nearwork_day": 77,
+        "out_time": 5,
+        "out_time_lux": 10927,
+        "step_count": 1215,
+        "nearwork_burden_day_percent": 29,
+        "out_time_lux_percent": 4,
+        "lux_day_percent": 3,
+        "user_ranking": 32,
+        "grade": "e",
+        "grade_cn": "较差",
+        "intro": "今日用眼较差，属于近视中高危人群",
+        "suggest": "此分数说明孩子的用眼行为存在较大的问题，如户外时间较短或室内近距用眼时间过长过近等问题持续未得到改善，预计未来近视度数将继续加深到中高度近视。孩子需要达到不少于2小时的户外时间，同时室内需保持“一拳一尺一寸”的标准坐姿。",
+        "out_time_data": {
+            "out_time": 5,
+            "out_time_percent": 4,
+            "out_time_grade": "a",
+            "out_time_grade_cn": "太少",
+            "out_time_suggest": "意味着今天户外活动时间少于1个小时，距离眼科专家规定的每天不少于户外2小时的目标尚远；孩子长时间在室内将会影响身体与视力的健康发育，近视的风险也将大幅提高。建议课外多进行登高望远活动，让孩子在公园和山上凝视远处的田野和群山。"
+        },
+        "lux_data": {
+            "lux_day_percent": 3,
+            "lux_day_grade": "a",
+            "lux_day_grade_cn": "太少",
+            "lux_day_suggest": "意味着今天的阳光摄入量小于15w lux（光照单位），还远远没有达到目标哦！室内的光照要远远小于阳光的光照强度，同时由于空间的限制，孩子眼睛也未能看到足够远的距离，因此建议孩子多去户外接受阳光的照射，将对视力大有好处。"
+        },
+        "step_count_data": {
+            "step_count": 1215,
+            "step_count_percent": 12,
+            "step_count_grade": "a",
+            "step_count_grade_cn": "太少",
+            "step_count_suggest": "你今天的运动步数过少哦（少于5000步），距离今天的运动目标还远远不够呢，要多多参加户外活动，增加看远的时间，眼睛才有机会得到放松，身心得到锻炼哦！"
+        },
+        "bad_posture_data": {
+            "bad_posture_day": 61,
+            "bad_posture_day_percent": 25,
+            "bad_posture_times": 30,
+            "bad_posture_times_percent": 33,
+            "bad_posture_times_grade": "a",
+            "bad_posture_times_grade_cn": "低风险",
+            "bad_posture_times_suggest": "你今天出现不良用眼姿态的次数（小于45次）在低风险范畴哦！你的用眼姿态整体很好，你一定是班上的爱眼护眼小标兵，诺小瞳要给你100分，以后也请继续保持满分的用眼好习惯，一双好眼睛将会让你受益一生！"
+        },
+        "nearwork_burden_data": {
+            "nearwork_burden_day": 219,
+            "nearwork_burden_percent": 29,
+            "nearwork_burden_grade": "a",
+            "nearwork_burden_grade_cn": "低风险",
+            "nearwork_burden_suggest": "你今天的颈椎与用眼负担在375D以内，说明今天的颈椎与用眼负担在可接受的范围内，没有承受过多的负担，近视眼与颈椎病的发生发展风险都很低，眼睛和颈椎在你的保护下，都在继续健健康康地发育呢！"
+        },
+        "nearwork_data": {
+            "nearwork_total": 77,
+            "nearwork_percent": 32,
+            "nearwork_grade": "a",
+            "nearwork_grade_cn": "低风险",
+            "nearwork_suggest": "你今天的近距用眼时间（小于2个小时）在低风险范围内，眼睛得到了充分的休息，度过了轻松的一天，请继续保持哦！"
+        }
     }
 }
 ```
