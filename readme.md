@@ -6,7 +6,9 @@
 
 AKESO_NEW OPEN API文档
 #### <a href="#create_user">创建用户</a>
+#### <a href="#exist_user">根据手机号查询用户是否存在</a>
 #### <a href="#add_child">添加儿童</a>
+#### <a href="#child_list">根据手机号或user_id获取儿童列表</a>
 #### <a href="#users_device">绑定镜腿</a>
 #### <a href="#uploads_data">同步数据</a>
 #### <a href="#forecasts_options">近视预测条件</a>
@@ -50,6 +52,36 @@ Content-type: "application/json"
 }
 ```
 
+## <a name="exist_user">根据手机号查询用户是否存在</a>
+```
+POST http://hostname/api/open/users/exists
+```
+### Request
+
+```
+# HEADERS
+Content-type: "application/json"
+
+# BODY
+{
+    "phone": "手机号"
+}
+```
+### Response
+
+#### 正确结果
+
+```
+# BODY
+{
+    "status":200,
+    "message":"请求成功",
+    "data": {
+      user_id: 1
+    }
+}
+```
+
 ## <a name="add_child">添加儿童</a>
 ```
 POST http://hostname/api/open/children/add
@@ -80,6 +112,40 @@ Content-type: "application/json"
     }
 }
 ```
+
+## <a name="child_list">根据手机号或user_id获取儿童列表(先查user_id,没有用户再查phone)</a>
+```
+POST http://hostname/api/open/users/children
+```
+### Request
+
+```
+# HEADERS
+Content-type: "application/json"
+
+# BODY
+{
+    "user_id": "用户id"，
+    "phone": "手机号"
+}
+```
+### Response
+
+#### 正确结果
+
+```
+# BODY
+{
+    "status":200,
+    "message":"添加成功",
+    "data": {
+      children: [
+        {id: 1, name: '', age: 1, gender: ''}
+      ]
+    }
+}
+```
+
 
 ## <a name="users_device">绑定镜腿</a>
 ```
