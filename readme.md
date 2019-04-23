@@ -10,6 +10,7 @@ AKESO_NEW OPEN API文档
 #### <a href="#add_child">添加儿童</a>
 #### <a href="#child_list">根据手机号或user_id获取儿童列表</a>
 #### <a href="#users_device">绑定镜腿</a>
+#### <a href="#unbind_device">解绑镜腿</a>
 #### <a href="#uploads_data">同步数据</a>
 #### <a href="#forecasts_options">近视预测条件</a>
 #### <a href="#forecasts_search">近视预测查询</a>
@@ -146,7 +147,6 @@ Content-type: "application/json"
 }
 ```
 
-
 ## <a name="users_device">绑定镜腿</a>
 ```
 POST http://hostname/api/open/users/device
@@ -176,6 +176,34 @@ Content-type: "application/json"
     "message":"绑定成功"
 }
 ```
+
+## <a name="unbind_device">解绑镜腿</a>
+```
+POST http://hostname/api/open/users/unbind
+```
+### Request
+
+```
+# HEADERS
+Content-type: "application/json"
+
+# BODY
+{
+    "child_id": "儿童id"
+}
+```
+### Response
+
+#### 正确结果
+
+```
+# BODY
+{
+    "status":200,
+    "message":"解绑成功"
+}
+```
+
 
 ## <a name="uploads_data">同步数据</a>
 ```
