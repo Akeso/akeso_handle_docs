@@ -179,7 +179,7 @@ Content-type: "application/json"
 
 ## <a name="unbind_device">解绑镜腿</a>
 ```
-POST http://hostname/api/open/users/unbind
+Delete http://hostname/api/open/users/unbind
 ```
 ### Request
 
