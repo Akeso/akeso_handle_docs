@@ -18,6 +18,7 @@ AKESO_NEW OPEN API文档
 #### <a href="#reports_daily">日报</a>
 #### <a href="#reports_weekly">周报</a>
 #### <a href="#reports_monthly">月报</a>
+#### <a href="#device_unbind">根据设备地址解绑设备</a>
 
 ```
 ```
@@ -729,5 +730,35 @@ Content-type: "application/json"
 		"doctor_name": "",
 		"doctor_id": null
 	}
+}
+```
+
+## <a name="device_unbind">根据设备地址解绑设备</a>
+```
+GET http://hostname/api/open/devices/unbind
+```
+### Request
+
+```
+# HEADERS
+Content-type: "application/json"
+
+# BODY
+{
+    mac_address: 'xxxxxxx'
+}
+```
+### Response
+
+#### 正确结果
+
+```
+# HTTP CODE
+200
+
+# BODY
+{
+	"status": 200,
+	"message": "设备解绑成功"
 }
 ```
